@@ -1,5 +1,6 @@
 
 menu = dict()
+ordine = dict()
 flag = True
 
 while flag:
@@ -25,7 +26,6 @@ while flag:
         print(menu)
 
     elif scelta == '4':
-        ordine = dict()
         nome = input("Inserire il nome del piatto: ")
         quantita = input("Inserire la quantità ordinata: ")
         ordine[nome] = quantita
@@ -35,7 +35,7 @@ while flag:
         for nome in ordine.keys():
             prezzo = float(menu[nome])
             quantita = float(ordine[nome])
-            conto += prezzo*nome
+            conto += prezzo*quantita
         print("Il conto è di", conto, "€")
 
     elif scelta == '0':
@@ -43,5 +43,3 @@ while flag:
 
     else:
         print("Errore: comando non riconosciuto")
-
- 
