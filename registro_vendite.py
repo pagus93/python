@@ -28,16 +28,16 @@ while flag:
     elif scelta == '3':
         nome = input("Inserire il nome del prodotto: ")
         prezzo = float(registro[nome][0])
-        quantità = int(registro[nome][1])
-        print("Il prodotto", nome, "ha incassato un totale di:", prezzo*quantità, "€")
+        quantita = int(registro[nome][1])
+        print("Il prodotto", nome, "ha incassato un totale di:", prezzo*quantita, "€")
 
     elif scelta == '4':
         fatturato = 0
         for nome in registro.keys():
             prezzo = float(registro[nome][0])
-            quantità = int(registro[nome][1])
-            fatturato += prezzo*quantità
-        print(fatturato)
+            quantita = int(registro[nome][1])
+            fatturato += prezzo*quantita
+        print("Il fatturato totale è:", fatturato)
 
     elif scelta == '0':
         flag = False
