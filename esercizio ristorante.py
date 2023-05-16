@@ -23,13 +23,13 @@ class Ordinazioni:
 
     def menu_modifica(self, scelta, menu, piatto_nuovo, prezzo_nuovo):
         for i in range(0, len(menu)):
-            if scelta == i:
+            if scelta == i+1:
                 menu[i] = {"piatto": piatto_nuovo, "prezzo": prezzo_nuovo}
         print("Menù aggiornato:", menu)
     
     def menu_ordina(self, scelta, menu, cliente, ordini):
         for i in range(0, len(menu)):
-            if scelta == i:
+            if scelta == i+1:
                 ordini.append(menu[i]["piatto"])
         # print("Ordinazione del cliente", cliente, "aggiornata:", ordini)
     
@@ -39,30 +39,30 @@ class Ordinazioni:
                 if menu[i]["piatto"] == ordini[j]:
                     totale += float(menu[i]["prezzo"])
         print("")
-        print("Totale conto del cliente", cliente + ":", totale + "€")
+        print("Totale conto del cliente", cliente + ":", str(totale) + "€")
         print("")
 
 ordinazione = Ordinazioni()
 
 flag1 = False
 while not flag1:
-    scelta1 = input("""Premere 1 per aggiungere un piatto all'ordinazione.
+    scelta1 = int(input("""Premere 1 per aggiungere un piatto all'ordinazione.
 Premere 2 per calcolare il conto.
 Premere 3 per modificare un piatto del menù.
 Premere 0 per uscire.
 
-""")
+"""))
 
-    if scelta1 == "0":
+    if scelta1 == 0:
         flag1 = True
     
-    elif scelta1 == "1":
+    elif scelta1 == 1:
         ordinazione.cliente = input("""
 Inserire cognome e nome del cliente: """)
 
         flag2 = False
         while not flag2:
-            scelta2 = input("""
+            scelta2 = int(input("""
 Scegliere il piatto da aggiungere all'ordinazione:
 Premere 1 per ordinare """ + ordinazione.piatti[0] + """.
 Premere 2 per ordinare """ + ordinazione.piatti[1] + """.
@@ -70,8 +70,8 @@ Premere 3 per ordinare """ + ordinazione.piatti[2] + """.
 Premere 4 per ordinare """ + ordinazione.piatti[3] + """.
 Premere 0 per salvare l'ordinazione e tornare al menù principale.
 
-""")
-            if scelta2 == "0":
+"""))
+            if scelta2 == 0:
                 flag2 = True
                 print("")
                 print("Ordinazione del cliente", ordinazione.cliente, "aggiornata:")
@@ -80,13 +80,13 @@ Premere 0 per salvare l'ordinazione e tornare al menù principale.
             else:
                 ordinazione.menu_ordina(scelta2, ordinazione.menu, ordinazione.cliente, ordinazione.ordini)
     
-    elif scelta1 == "2":
+    elif scelta1 == 2:
         ordinazione.conto(ordinazione.menu, ordinazione.cliente, ordinazione.ordini, ordinazione.totale)
     
-    elif scelta1 == "3":
+    elif scelta1 == 3:
         flag2 = False
         while not flag2:
-            scelta2 = input("""
+            scelta2 = int(input("""
 Scegliere il piatto da sostituire nel menù:
 Premere 1 per sostituire """ + ordinazione.piatti[0] + """.
 Premere 2 per sostituire """ + ordinazione.piatti[1] + """.
@@ -94,8 +94,8 @@ Premere 3 per sostituire """ + ordinazione.piatti[2] + """.
 Premere 4 per sostituire """ + ordinazione.piatti[3] + """.
 Premere 0 per tornare al menù principale.
 
-""")
-            if scelta2 == "0":
+"""))
+            if scelta2 == 0:
                 flag2 = True
             else:
                 piatto_nuovo = input("""
