@@ -42,7 +42,8 @@ while not flag1:
         flag1 = True
     
     elif scelta1 == 1:
-        ordinazione.cliente = input("\nInserire cognome e nome del cliente: ")
+        ordinazione.ordini = []
+        ordinazione.cliente = input("\nInserire nome e cognome del cliente: ")
 
         flag2 = False
         while not flag2:
@@ -59,6 +60,7 @@ while not flag1:
                 ordinazione.menu_ordina(scelta2, ordinazione.menu, ordinazione.cliente, ordinazione.ordini)
     
     elif scelta1 == 2:
+        ordinazione.totale = 0
         ordinazione.totale = ordinazione.conto(ordinazione.menu, ordinazione.cliente, ordinazione.ordini, ordinazione.totale)
         print(f"\nTotale conto del cliente {ordinazione.cliente}: {ordinazione.totale}€")
     
